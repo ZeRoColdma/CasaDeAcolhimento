@@ -8,13 +8,48 @@ const {Navigator, Screen} = createStackNavigator();
 import OrphanagesMap from './pages/OrphanagesMap'
 import OrphanageDetails from './pages/OrphanageDetails'
 
+import SelectMapPosition from './pages/CreateOrphanage/SelectMapPosistion'
+import SelectData from './pages/CreateOrphanage/OrphanageData'
+import Header from './components/Header';
+
+
 export default function Router(){
   return (
     <NavigationContainer>
-    <Navigator screenOptions={{headerShown: false}}>
-      <Screen name="OrphanagesMap" component={OrphanagesMap}/>
+    <Navigator screenOptions={{headerShown: false, cardStyle: {backgroundColor: '#f2f3f5'} }}>
 
-      <Screen name="OrphanageDetails" component={OrphanageDetails}/>
+      <Screen 
+      name="OrphanagesMap" 
+      component={OrphanagesMap}
+      
+      />
+
+      <Screen 
+      name="OrphanageDetails" 
+      component={OrphanageDetails}
+      options={{
+        headerShown: true,
+        header: () => <Header showCancel={false} title="Orfanato"/>
+      }}
+      />
+
+      <Screen 
+      name="SelectMapPosition" 
+      component={SelectMapPosition}
+      options={{
+        headerShown: true,
+        header: () => <Header title="Selecione no Mapa"/>
+      }}
+      />
+
+      <Screen 
+      name="SelectData" 
+      component={SelectData}
+      options={{
+        headerShown: true,
+        header: () => <Header title="Informe os dados"/>
+      }}
+      />
 
     </Navigator>
 
